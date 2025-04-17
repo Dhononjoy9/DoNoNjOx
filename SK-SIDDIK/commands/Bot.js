@@ -32,10 +32,7 @@ module.exports.run = async function({ api, event, args, Users }) {
     const res = await axios.get(`http://65.109.80.126:20392/sim?type=ask&ask=${encodeURIComponent(prompt)}`);
     const reply = res.data.data.msg;
 
-    api.sendMessage({
-      body: `♡ ${name} ♡\n\n${reply}`,
-      mentions: [{ tag: name, id: event.senderID }]
-    }, event.threadID, (err, info) => {
+    api.sendMessage(`${reply}`, event.threadID, (err, info) => {
       global.client.handleReply.push({
         name: module.exports.config.name,
         messageID: info.messageID,
@@ -48,19 +45,15 @@ module.exports.run = async function({ api, event, args, Users }) {
   }
 };
 
-module.exports.handleReply = async function({ api, event, handleReply, Users }) {
+module.exports.handleReply = async function({ api, event, handleReply }) {
   const axios = require("axios");
   const prompt = event.body;
-  const name = await Users.getNameUser(event.senderID);
 
   try {
     const res = await axios.get(`http://65.109.80.126:20392/sim?type=ask&ask=${encodeURIComponent(prompt)}`);
     const reply = res.data.data.msg;
 
-    api.sendMessage({
-      body: `♡ ${name} ♡\n\n${reply}`,
-      mentions: [{ tag: name, id: event.senderID }]
-    }, event.threadID, (err, info) => {
+    api.sendMessage(`${reply}`, event.threadID, (err, info) => {
       global.client.handleReply.push({
         name: module.exports.config.name,
         messageID: info.messageID,

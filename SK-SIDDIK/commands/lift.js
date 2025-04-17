@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, args }) {
   }
 
   api.sendMessage(
-    `╭────────────────⊙\n├─☾ JUST WAIT\n├─☾ ${delayMinutes} MINUTE(S)\n├─☾ SK SIDDIK KHAN\n╰────────────────⊙`,
+    `╭────────────────⊙\n├─☾ JUST WAIT\n├─☾ ${delayMinutes} MINUTES\n├─☾ SK SIDDIK KHAN\n╰────────────────⊙`,
     event.threadID
   );
 
